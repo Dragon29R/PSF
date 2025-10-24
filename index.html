@@ -3,10 +3,44 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>Cool Website</title>
+        <title>PL Custom Morph Generator</title>
+        <link rel="stylesheet" href="index.css">
+        <script src="script.js" defer></script>
     </head>
     <body>
-        <h1>My Project Site</h1>
-        <p>Hello from my GitHub Pages project site!</p>
+        <h1>PL Custom Morph Generator</h1>
+
+        
+        <form id="rtagForm">
+            <label for="team">Team:</label>
+            <select id="team">
+                <option>Pandora's Observers</option>
+                <option>Prometheus Security Force</option>
+            </select>
+
+            <label for="rank">Rank:</label>
+            <select id="rank"></select>
+            
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter username">
+
+            <label for="codename">Codename:</label>
+            <input type="text" id="codename" name="codename" placeholder="Enter codename">
+        
+            <label for="bca">
+            <input type="checkbox" id="bca" name="bca">
+                BCA 
+            </label>
+
+            <br>
+            <button type="submit">Generate</button>
+        </form>
+
+        <div id="outputWrap">
+            <pre id="output" aria-live="polite"></pre>
+        </div>
+
+
+
     </body>
 </html>
