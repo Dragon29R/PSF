@@ -98,7 +98,11 @@ document.addEventListener('DOMContentLoaded', () => {
         commands.push(`permcrtag ${username} ${teamDetails.color}`);
 
         // 4. Starter Gear
-        commands.push(`startergear ${username} ${teamDetails.starterItems},${level}`);
+        if (team === "Prometheus Security Force" && tier === "HC") {
+            commands.push(`startergear ${username} golden,clipboard,tablet,authorize`);
+        } else {
+            commands.push(`startergear ${username} ${teamDetails.starterItems},${level}`);
+        }
 
         // 5. Health
         commands.push(`permmaxhealth ${username} ${health}`);
