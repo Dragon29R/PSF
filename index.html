@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="icon" type="image/x-icon" href="PL-Icon.png">
         <title>PL Custom Morph Generator</title>
         
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,49 +12,98 @@
         
         <link rel="stylesheet" href="index.css">
         
-        <script src="script.js" defer></script>
+        <script type="module" src="script.js"></script>
     </head>
     <body>
+        <div id="app-container"> 
+            <main>
+                <h1>PL Custom Morph Generator</h1>
         
-        <main>
-            <h1>PL Custom Morph Generator</h1>
-    
-            <form id="rtagForm">
-                <div class="form-group">
-                    <label for="team">Team:</label>
-                    <select id="team">
-                        <option>Pandora's Observers</option>
-                        <option>Prometheus Security Force</option>
-                    </select>
-                </div>
-    
-                <div class="form-group">
-                    <label for="rank">Rank:</label>
-                    <select id="rank"></select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" placeholder="Enter username">
-                </div>
-    
-                <div class="form-group">
-                    <label for="codename">Codename:</label>
-                    <input type="text" id="codename" name="codename" placeholder="Enter codename (optional)">
-                </div>
-            
-                <div class="form-check">
-                    <input type="checkbox" id="bca" name="bca">
-                    <label for="bca">BC:A</label>
-                </div>
-    
-                <button type="submit">Generate</button>
-            </form>
-    
-            <div id="outputWrap">
-                <pre id="output" aria-live="polite"></pre>
-            </div>
-        </main>
+                <form id="rtagForm">
+                    <div class="form-group">
+                        <label for="team">Team:</label>
+                        <select id="team">
+                            <option>Pandora's Observers</option>
+                            <option>Prometheus Security Force</option>
+                            <option>Overseer</option>
 
+                        </select>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="rank">Rank:</label>
+                        <select id="rank"></select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" placeholder="Enter username">
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="codename">Codename:</label>
+                        <input type="text" id="codename" name="codename" placeholder="Enter codename">
+                    </div>
+                
+                    <div class="form-check">
+                        <input type="checkbox" id="bca" name="bca">
+                        <label for="bca">BC:A</label>
+                    </div>
+        
+                    <div class="form-check" id="altTshirtWrap" style="display: none;">
+                        <input type="checkbox" id="altTshirt" name="altTshirt">
+                        <label for="altTshirt">Alternative T-Shirt (Sgt+)</label>
+                    </div>
+
+                    <button type="submit">Generate</button>
+                </form>
+        
+                <div id="outputWrap">
+                    <pre id="output" aria-live="polite"></pre>
+                </div>
+            </main>
+            <div id="info-panel">
+                <aside id="customization-panel" style="display: flex;">
+                    <h2>PSF Customization</h2>
+
+                    <div class="form-group">
+                        <label for="headwear">Headwear:</label>
+                        <select id="headwear" name="headwear">
+                            <option value="grey_helmet" data-rank="all">Grey Helmet</option> 
+                            <option value="grey_cap" data-rank="all">Grey Cap</option>
+                            <option value="grey_beanie" data-rank="corporal">Grey Beanie (Cpl+)</option>
+                            <option value="black_helmet" data-rank="sergeant">Black Helmet (Sgt+)</option>
+                            <option value="black_cap" data-rank="sergeant">Black Cap (Sgt+)</option>
+                            <option value="black_beanie" data-rank="sergeant">Black Beanie (Sgt+)</option>
+                            <option value="black_beret" data-rank="master_sergeant">Black Beret (MSgt+)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mask">Masks:</label>
+                        <select id="mask" name="mask">
+                            <option value="" data-rank="all">None</option>
+                            <option value="wolf_gray_deadbird_balaclava" data-rank="all">Wolf Gray DeadBird Balaclava</option>
+                            <option value="wolf_grey_yastrub_balaclava" data-rank="all">Wolf Grey Yastrub Balaclava</option>
+                            <option value="black_deadbird_balaclava" data-rank="sergeant">Black DeadBird Balaclava (Sgt+)</option>
+                            <option value="black_yastrub_balaclava" data-rank="sergeant">Black Yastrub Balaclava (Sgt+)</option>
+                            <option value="tactical_balaclava" data-rank="sergeant">Tactical Balaclava (Sgt+)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eyewear">Eyewear:</label>
+                        <select id="eyewear" name="eyewear">
+                            <option value="" data-rank="all">None</option>
+                            <option value="black_goggles" data-rank="corporal">Black Goggles (Cpl+)</option>
+                            <option value="clear_bowcaster_shades" data-rank="corporal">Clear Bowcaster Shades (Cpl+)</option>
+                            <option value="yastrub_ballistic_glasses" data-rank="corporal">Yastrub Ballistic Glasses (Cpl+)</option>
+                            <option value="black_shades" data-rank="corporal">Black Shades (Cpl+)</option>
+                            <option value="black_shades_2" data-rank="corporal">Black Shades 2 (Cpl+)</option>
+                        </select>
+                    </div>
+                </aside>
+            </div>
+        </div>
     </body>
 </html>

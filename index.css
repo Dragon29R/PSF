@@ -33,6 +33,27 @@ body {
     min-height: 100vh;
 }
 
+/* =================================
+NEW LAYOUT STYLES
+=================================
+*/
+#app-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    width: 100%;
+    /* Start with max-width for a single card */
+    max-width: 600px; 
+    margin-top: 2rem;
+    transition: max-width 0.4s ease-in-out;
+}
+
+/* This class is added by JS to expand the container */
+#app-container.side-panel-visible {
+    max-width: 1050px; /* 600px (main) + 400px (aside) + 50px (gap) */
+}
+
 /* --- Main Layout Card --- */
 main {
     width: 100%;
@@ -41,9 +62,45 @@ main {
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
     padding: 2rem;
-    margin-top: 2rem;
     border: 1px solid var(--border-color);
+    /* Make its width flexible */
+    flex-shrink: 0;
 }
+
+/* =================================
+NEW CUSTOMIZATION PANEL STYLES
+=================================
+*/
+#customization-panel {
+    background-color: var(--surface-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    
+    /* Set a fixed width */
+    width: 400px;
+    flex-shrink: 0;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+#customization-panel h2 {
+    text-align: center;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+}
+
+/* --- REMOVED --- */
+/* All styles for .option-group, .option-group legend, */
+/* and .option-group scrollbars have been removed. */
+/* ================================= */
+
 
 h1 {
     text-align: center;
@@ -95,7 +152,7 @@ select:focus {
     box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.3);
 }
 
-/* Checkbox Styling */
+/* Checkbox & Radio Styling */
 .form-check {
     display: flex;
     align-items: center;
@@ -120,11 +177,13 @@ select:focus {
     cursor: pointer;
 }
 
-input[type="checkbox"] {
+input[type="checkbox"],
+input[type="radio"] {
     width: 1.15em;
     height: 1.15em;
     accent-color: var(--primary-color);
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 /* --- Button Styling --- */
@@ -170,4 +229,29 @@ button[type="submit"]:active {
     word-break: break-all;   /* Breaks long strings */
     
     min-height: 50px; /* Gives it a bit of height even when empty */
+}
+
+/* =================================
+RESPONSIVE STYLES (NEW)
+=================================
+*/
+@media (max-width: 1050px) {
+    #app-container {
+        /* Stack the panels vertically */
+        flex-direction: column;
+        align-items: center;
+        /* Ensure it doesn't get wider than the main panel */
+        max-width: 600px;
+    }
+
+    /* Override the expanded width */
+    #app-container.side-panel-visible {
+        max-width: 600px;
+    }
+
+    #customization-panel {
+        /* Make the panel full-width (up to 600px) */
+        width: 100%;
+        max-width: 600px;
+    }
 }
